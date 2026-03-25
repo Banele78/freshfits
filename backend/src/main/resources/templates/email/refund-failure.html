@@ -1,0 +1,247 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refund Failed - FreshFits</title>
+    <style>
+      body {
+        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #111827;
+        margin: 0;
+        padding: 0;
+        background-color: #f6f7fb;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(17, 24, 39, 0.08);
+        border: 1px solid #eef0f4;
+      }
+
+      /* Customer-facing refund failure: premium + clear */
+      .header {
+        background: linear-gradient(135deg, #7f1d1d, #111827);
+        padding: 32px 22px;
+        text-align: center;
+        color: #ffffff;
+        position: relative;
+      }
+
+      .header:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 30% 20%,
+          rgba(255, 255, 255, 0.08),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+
+      .brand {
+        position: relative;
+        z-index: 1;
+      }
+
+      .logo-subtitle {
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-top: 6px;
+        color: #ffffff;
+      }
+
+      .header h1 {
+        margin: 14px 0 0 0;
+        font-size: 20px;
+        font-weight: 750;
+        letter-spacing: 0.2px;
+        color: #ffffff;
+      }
+
+      .content {
+        padding: 28px 26px;
+      }
+
+      .content h2 {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+        color: #111827;
+      }
+
+      .muted {
+        color: #6b7280;
+      }
+
+      .info-box {
+        background-color: #fff7ed; /* orange-50 */
+        border: 1px solid #fed7aa; /* orange-200 */
+        border-radius: 12px;
+        padding: 14px;
+        margin: 18px 0;
+        color: #111827;
+      }
+
+      .info-item {
+        margin: 8px 0;
+        color: #374151;
+      }
+
+      .info-item strong {
+        color: #111827;
+      }
+
+      .button-wrap {
+        text-align: center;
+        margin: 18px 0 0;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 14px 22px;
+        background-color: #991b1b; /* red-800 */
+        color: #ffffff !important;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        box-shadow: 0 8px 16px rgba(153, 27, 27, 0.18);
+      }
+
+      .button:hover {
+        background-color: #7f1d1d; /* red-900 */
+      }
+
+      .support-link {
+        color: #111827;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .footer {
+        background-color: #f8fafc;
+        padding: 18px 18px;
+        text-align: center;
+        font-size: 12px;
+        color: #6b7280;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          border-radius: 0 !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .content {
+          padding: 20px 16px !important;
+        }
+        .header {
+          padding: 26px 16px !important;
+        }
+        .header h1 {
+          font-size: 18px !important;
+        }
+        .button {
+          display: block !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          padding: 14px 16px !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="brand">
+          <!-- FreshFits Logo -->
+          <img
+            src="https://freshfits-images.s3.eu-north-1.amazonaws.com/email/freshFitsLogo.png"
+            alt="FreshFits"
+            width="140"
+            style="
+              display: block;
+              margin: 0 auto 10px auto;
+              height: auto;
+              max-width: 140px;
+              width: 100%;
+              border: 0;
+              outline: none;
+              text-decoration: none;
+            "
+          />
+
+          <div class="logo-subtitle">Premium Mzansi Streetwear</div>
+          <h1>Refund Failed</h1>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2>Hello, <span th:text="${customerName}">Customer</span> 👋</h2>
+
+        <p class="muted">
+          We attempted to process your refund, but it could not be completed at
+          this time.
+        </p>
+
+        <div class="info-box">
+          <div class="info-item">
+            <strong>Order ID:</strong>
+            <span th:text="${orderId}">12345</span>
+          </div>
+          <div class="info-item">
+            <strong>Refund Amount:</strong>
+            <span th:text="${refundAmount}">R100.00</span>
+          </div>
+          <div class="info-item">
+            <strong>Reason:</strong>
+            <span th:text="${failureReason}">Payment gateway error</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Please contact support so we can assist you and resolve the issue.
+        </p>
+
+        <div class="button-wrap">
+          <a th:href="${supportUrl}" class="button">Contact Support</a>
+        </div>
+
+        <p class="muted" style="margin-top: 16px">
+          Need immediate assistance? Email us at
+          <a
+            th:href="'mailto:' + ${supportEmail}"
+            class="support-link"
+            th:text="${supportEmail}"
+            >support@freshfits.com</a
+          >
+        </p>
+      </div>
+
+      <div class="footer">
+        <p style="margin: 0">
+          &copy;
+          <span th:text="${#temporals.year(#temporals.createNow())}">2026</span>
+          FreshFits. All rights reserved.
+        </p>
+        <p style="margin: 6px 0 0">
+          This email relates to your FreshFits refund.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

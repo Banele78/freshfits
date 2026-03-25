@@ -1,0 +1,288 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Your Email - FreshFits</title>
+    <style>
+      /* Email-safe defaults */
+      body {
+        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #111827;
+        margin: 0;
+        padding: 0;
+        background-color: #f6f7fb;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      /* Make container actually responsive in email clients */
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(17, 24, 39, 0.08);
+        border: 1px solid #eef0f4;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #0b0f19, #111827);
+        padding: 32px 22px;
+        text-align: center;
+        color: #ffffff;
+        position: relative;
+      }
+
+      .header:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 30% 20%,
+          rgba(255, 255, 255, 0.08),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+
+      .brand {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Fallback text if images are blocked */
+      .logo {
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        margin: 6px 0 0 0;
+        color: #ffffff;
+      }
+
+      .logo-subtitle {
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-top: 6px;
+        color: #ffffff;
+      }
+
+      .header h1 {
+        margin: 14px 0 0 0;
+        font-size: 20px;
+        font-weight: 650;
+        letter-spacing: 0.2px;
+        color: #ffffff;
+      }
+
+      .content {
+        padding: 28px 26px;
+      }
+
+      .content h2 {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+        color: #111827;
+      }
+
+      .muted {
+        color: #6b7280;
+      }
+
+      .button-wrap {
+        text-align: center;
+        margin: 22px 0 10px;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 14px 22px;
+        background-color: #111827;
+        color: #ffffff !important;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        box-shadow: 0 8px 16px rgba(17, 24, 39, 0.18);
+      }
+
+      .button:hover {
+        background-color: #0b0f19;
+      }
+
+      .divider {
+        height: 1px;
+        background: #e5e7eb;
+        margin: 16px 0;
+      }
+
+      .linkbox {
+        word-break: break-all;
+        color: #374151;
+        background-color: #f3f4f6;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #e5e7eb;
+        font-size: 13px;
+      }
+
+      .warning {
+        background-color: #fff7ed;
+        border: 1px solid #fed7aa;
+        border-radius: 12px;
+        padding: 14px;
+        margin: 18px 0;
+        color: #9a3412;
+      }
+
+      .support-link {
+        color: #111827;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .footer {
+        background-color: #f8fafc;
+        padding: 18px 18px;
+        text-align: center;
+        font-size: 12px;
+        color: #6b7280;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      /* Mobile improvements */
+      @media (max-width: 600px) {
+        .container {
+          border-radius: 0 !important; /* edge-to-edge on small screens */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .content {
+          padding: 20px 16px !important;
+        }
+
+        .header {
+          padding: 26px 16px !important;
+        }
+
+        .header h1 {
+          font-size: 18px !important;
+          margin-top: 12px !important;
+        }
+
+        .logo {
+          font-size: 24px !important;
+        }
+
+        .logo-subtitle {
+          font-size: 11px !important;
+          letter-spacing: 1.6px !important;
+        }
+
+        /* Make the CTA truly tappable */
+        .button {
+          display: block !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          padding: 14px 16px !important;
+        }
+
+        .linkbox {
+          font-size: 12px !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="brand">
+          <!-- Logo (email-safe sizing) -->
+          <img
+            src="https://freshfits-images.s3.eu-north-1.amazonaws.com/email/freshFitsLogo.png"
+            alt="FreshFits"
+            width="140"
+            style="
+              display: block;
+              margin: 0 auto 10px auto;
+              height: auto;
+              max-width: 140px;
+              width: 100%;
+              border: 0;
+              outline: none;
+              text-decoration: none;
+            "
+          />
+
+          <!-- Fallback text (shows if images are blocked) -->
+          <div class="logo">FRESHFITS</div>
+
+          <div class="logo-subtitle">Premium Mzansi Streetwear</div>
+          <h1>Verify Your Email Address</h1>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2>Hello, <span th:text="${userName}">User</span> 👋</h2>
+        <p class="muted">
+          Welcome to FreshFits. Please confirm your email address to complete
+          your registration and start shopping.
+        </p>
+
+        <div class="button-wrap">
+          <a th:href="${verificationUrl}" class="button">Verify Email</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="muted" style="margin: 0 0 10px 0">
+          If the button doesn’t work, copy and paste this link into your
+          browser:
+        </p>
+
+        <div class="linkbox">
+          <span th:text="${verificationUrl}">Verification URL</span>
+        </div>
+
+        <div class="warning">
+          <strong>Heads up:</strong> This verification link expires in
+          <strong th:text="${expirationHours}">24</strong> hours. If it expires,
+          request a new verification email from the login screen.
+        </div>
+
+        <p class="muted">
+          If you didn’t create a FreshFits account, you can safely ignore this
+          email.
+        </p>
+
+        <p class="muted">
+          Need help? Contact us at
+          <a
+            th:href="'mailto:' + ${supportEmail}"
+            class="support-link"
+            th:text="${supportEmail}"
+            >support@freshfits.com</a
+          >
+        </p>
+      </div>
+
+      <div class="footer">
+        <p style="margin: 0">
+          &copy;
+          <span th:text="${#temporals.year(#temporals.createNow())}">2026</span>
+          FreshFits. All rights reserved.
+        </p>
+        <p style="margin: 6px 0 0">
+          This email was sent as part of your FreshFits account registration.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

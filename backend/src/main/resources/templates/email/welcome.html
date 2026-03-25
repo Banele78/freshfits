@@ -1,0 +1,313 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to FreshFits!</title>
+    <style>
+      body {
+        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #111827;
+        margin: 0;
+        padding: 0;
+        background-color: #f6f7fb;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(17, 24, 39, 0.08);
+        border: 1px solid #eef0f4;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #0b0f19, #111827);
+        padding: 32px 22px;
+        text-align: center;
+        color: #ffffff;
+        position: relative;
+      }
+
+      .header:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 30% 20%,
+          rgba(255, 255, 255, 0.08),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+
+      .brand {
+        position: relative;
+        z-index: 1;
+      }
+
+      .logo-subtitle {
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-top: 6px;
+        color: #ffffff;
+      }
+
+      .header h1 {
+        margin: 14px 0 0 0;
+        font-size: 24px;
+        font-weight: 750;
+        letter-spacing: 0.2px;
+        color: #ffffff;
+      }
+
+      .header p {
+        margin: 8px 0 0 0;
+        opacity: 0.9;
+      }
+
+      .content {
+        padding: 30px 26px;
+      }
+
+      .welcome-icon {
+        text-align: center;
+        font-size: 44px;
+        margin-bottom: 14px;
+      }
+
+      .content h2 {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+        color: #111827;
+      }
+
+      .muted {
+        color: #6b7280;
+      }
+
+      .button-wrap {
+        text-align: center;
+        margin: 22px 0 8px;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 14px 22px;
+        background-color: #111827;
+        color: #ffffff !important;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        box-shadow: 0 8px 16px rgba(17, 24, 39, 0.18);
+      }
+
+      .button:hover {
+        background-color: #0b0f19;
+      }
+
+      .features {
+        margin: 22px 0 10px;
+      }
+
+      .features h3 {
+        margin: 0 0 12px 0;
+        color: #111827;
+        font-size: 16px;
+      }
+
+      /* Email clients can be weird with flex — keep it simple */
+      .feature {
+        border: 1px solid #e5e7eb;
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 14px;
+        margin-bottom: 12px;
+      }
+
+      .feature-title {
+        margin: 0 0 6px 0;
+        font-weight: 700;
+        color: #111827;
+        font-size: 14px;
+      }
+
+      .feature-text {
+        margin: 0;
+        color: #6b7280;
+        font-size: 13px;
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        color: #111827;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        padding: 6px 10px;
+        border-radius: 999px;
+        margin-bottom: 10px;
+      }
+
+      .support-link {
+        color: #111827;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .footer {
+        background-color: #f8fafc;
+        padding: 18px 18px;
+        text-align: center;
+        font-size: 12px;
+        color: #6b7280;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          border-radius: 0 !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .content {
+          padding: 20px 16px !important;
+        }
+        .header {
+          padding: 26px 16px !important;
+        }
+        .header h1 {
+          font-size: 20px !important;
+        }
+        .button {
+          display: block !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          padding: 14px 16px !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="brand">
+          <!-- FreshFits Logo -->
+          <img
+            src="https://freshfits-images.s3.eu-north-1.amazonaws.com/email/freshFitsLogo.png"
+            alt="FreshFits"
+            width="140"
+            style="
+              display: block;
+              margin: 0 auto 10px auto;
+              height: auto;
+              max-width: 140px;
+              width: 100%;
+              border: 0;
+              outline: none;
+              text-decoration: none;
+            "
+          />
+
+          <div class="logo-subtitle">Premium Mzansi Streetwear</div>
+
+          <h1>Welcome to FreshFits!</h1>
+          <p>Local heat. Global standard.</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="welcome-icon">🔥</div>
+
+        <h2>Hello, <span th:text="${userName}">User</span>!</h2>
+        <p class="muted">
+          Welcome to FreshFits — where streetwear meets clean design. Your
+          account is ready. Jump in, explore drops, and find your next fit.
+        </p>
+
+        <div class="button-wrap">
+          <a th:href="${loginUrl}" class="button">Start Shopping</a>
+        </div>
+
+        <div class="features">
+          <h3>Here’s what you can do with your FreshFits account:</h3>
+
+          <div class="feature">
+            <div class="badge">🛍️ Shop</div>
+            <div class="feature-title">Discover local streetwear brands</div>
+            <p class="feature-text">
+              Browse curated collections and premium essentials from Mzansi
+              streetwear labels.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="badge">⭐ Save</div>
+            <div class="feature-title">Wishlist your favorite pieces</div>
+            <p class="feature-text">
+              Save items you love and come back when you’re ready to cop.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="badge">📦 Track</div>
+            <div class="feature-title">Track orders easily</div>
+            <p class="feature-text">
+              Get updates and keep tabs on deliveries from checkout to doorstep.
+            </p>
+          </div>
+
+          <div class="feature">
+            <div class="badge">👤 Manage</div>
+            <div class="feature-title">Manage your profile & addresses</div>
+            <p class="feature-text">
+              Update your details, delivery info, and preferences anytime.
+            </p>
+          </div>
+        </div>
+
+        <p class="muted">
+          <strong>Need help getting started?</strong> Contact us at
+          <a
+            th:href="'mailto:' + ${supportEmail}"
+            class="support-link"
+            th:text="${supportEmail}"
+            >support@freshfits.com</a
+          >
+          and we’ll assist.
+        </p>
+
+        <p class="muted">Welcome again — and enjoy the FreshFits experience.</p>
+
+        <p style="margin: 0">
+          Stay fresh,<br />
+          <strong>The FreshFits Team</strong>
+        </p>
+      </div>
+
+      <div class="footer">
+        <p style="margin: 0">
+          &copy;
+          <span th:text="${#temporals.year(#temporals.createNow())}">2026</span>
+          FreshFits. All rights reserved.
+        </p>
+        <p style="margin: 6px 0 0">
+          You’re receiving this email because you created a FreshFits account.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
